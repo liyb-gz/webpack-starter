@@ -1,21 +1,7 @@
 const Path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-let pages = [
-  'index',
-  'test'
-];
-
-let pagePlugins = pages.map(function(pageName) {
-  console.log(pageName);
-  return new HtmlWebpackPlugin({
-    filename: pageName + '.html',
-    template: Path.resolve(__dirname, `../src/${pageName}.html`)
-  });
-});
-console.log(pagePlugins);
+const pagePlugins = require('./load-multiple-pages');
 
 module.exports = {
   entry: {
